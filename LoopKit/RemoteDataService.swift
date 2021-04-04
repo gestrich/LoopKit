@@ -78,6 +78,8 @@ public protocol RemoteDataService: Service {
      - Parameter completion: The completion function to call with any success or failure.
      */
     func uploadSettingsData(_ stored: [StoredSettings], completion: @escaping (_ result: Result<Bool, Error>) -> Void)
+    
+    func validateNotificationSource(_ notification: [String: AnyObject]) -> Bool
 
 }
 
@@ -117,6 +119,10 @@ public extension RemoteDataService {
 
     func uploadSettingsData(_ stored: [StoredSettings], completion: @escaping (_ result: Result<Bool, Error>) -> Void) {
         completion(.success(false))
+    }
+    
+    func validateNotificationSource(_ notification: [String: AnyObject]) {
+        fatalError()
     }
 
 }
