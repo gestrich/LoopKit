@@ -109,6 +109,8 @@ public protocol RemoteDataService: Service {
      - Returns: Success
      */
     func validatePushNotificationSource(_ notification: [String: AnyObject]) -> Result<Void, Error>
+    
+    func uploadRemoteCommandStatus(status: String) async throws
 
 }
 
@@ -122,6 +124,9 @@ public extension RemoteDataService {
     var settingsDataLimit: Int? { return nil }
 
     func validatePushNotificationSource(_ notification: [String: AnyObject]) -> Result<Void, Error> { return .failure(PushNotificationValidationError.notificationsNotSupported) }
+    
+    func uploadRemoteCommandStatus(status: String) async throws {
+    }
 }
 
 enum PushNotificationValidationError: LocalizedError {
