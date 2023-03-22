@@ -172,4 +172,6 @@ extension MockService: RemoteDataService {
         return .success(Void())
     }
     
+    public func uploadRemoteCommandStatus(status: String) async throws {
+    }
 }
