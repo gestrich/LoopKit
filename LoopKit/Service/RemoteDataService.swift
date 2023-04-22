@@ -108,7 +108,10 @@ public protocol RemoteDataService: Service {
      - Parameter notification: The push notification dictionary
      - Returns: RemoteCommand
      */
+    //TODO: Add fetch to name here per Pete dicussion
     func commandFromPushNotification(_ notification: [String: AnyObject]) async throws -> RemoteCommand
+    func fetchRemoteCommands() async throws -> [RemoteCommand]
+    func fetchPendingRemoteCommands() async throws -> [RemoteCommand]
 
 }
 

@@ -176,4 +176,8 @@ extension MockService: RemoteDataService {
         
         throw MockServicePushNotificationError.remoteCommandsNotSupported
     }
+    
+    public func fetchRemoteCommands() async throws -> [RemoteCommand] {return []}
+    
+    public func fetchPendingRemoteCommands() async throws -> [RemoteCommand] {return []}
 }
