@@ -301,7 +301,7 @@ public class HealthKitSampleStore {
                 return
             }
 
-            if let delegate {
+            if let delegate = self.delegate {
                 delegate.processResults(from: query, added: newSamples, deleted: deletedSamples, anchor: anchor) { (success) in
                     if success {
                         // Do not advance anchor if we failed to update local cache
