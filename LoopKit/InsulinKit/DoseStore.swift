@@ -1268,8 +1268,18 @@ extension DoseStore {
     public func getDoses(start: Date? = nil, end: Date? = nil) async throws -> [DoseEntry] {
         return try await insulinDeliveryStore.getDoses(start: start, end: end)
     }
-
-
+    
+    /// Retrieves doses overlapping supplied range
+    ///
+    /// - Parameters:
+    ///   - start: The earliest date of dose entries to retrieve.
+    ///   - end: The latest date of dose entries to retrieve, if provided.
+    ///   - includeMutable: Whether to include mutable dose entries or not.
+    ///   - completion: A closure called once the dose entries have been retrieved.
+    ///   - result: An array of dose entries, in chronological order by startDate, or error.
+    public func getDoses(start: Date, end: Date? = nil, includeMutable: Bool, completion: @escaping (_ result: Swift.Result<[DoseEntry], Error>) -> Void) {
+        insulinDeliveryStore.getDoseEntries(start: start, end: end, includeMutable: includeMutable, completion: completion)
+    }
 
     /// Retrieves the maximum insulin on-board value from the two timeline values nearest to the specified date
     ///
